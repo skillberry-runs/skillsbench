@@ -1,11 +1,13 @@
-# skillsbench-history
+# skillsbench
 
-This is an **orphan branch** (no shared history with `main`) holding hand-authored
-evidence, results, and insights from optimizing SkillsBench-facing skills with
-cap-evolve. It is checked out into its own worktree, never switched-into in place — see
-"Working on this branch" below.
+Hand-authored evidence, results, and insights from optimizing SkillsBench-facing skills
+with [cap-evolve](https://github.com/skillberry-ai/cap-evolve).
 
-## Why this branch exists
+This repo was migrated on 2026-11-09 from the `skillsbench-history` orphan branch of
+`skillberry-ai/cap-evolve`, with full commit history preserved. It is one of the
+per-benchmark result repos in the [skillberry-runs](https://github.com/skillberry-runs) org.
+
+## Why this repo exists
 
 cap-evolve work here splits into two kinds of contribution:
 
@@ -19,10 +21,10 @@ cap-evolve work here splits into two kinds of contribution:
    `.github/workflows/benchmark-history-prune.yml`. Hand-authored content placed there
    would eventually be deleted.
 
-`skillsbench-history` is the home for kind 2. Dashboard **metrics** (the numbers behind
-the live results table) still go through the normal `benchmark-history` pipeline — see
-`ci/benchmarks/PUBLISHING.md` — since `skillsbench` is already a first-class `bench`
-value there. This branch is for everything a metrics record can't hold: the narrative,
+This repo is the home for kind 2. Dashboard **metrics** (the numbers behind
+the live results table) still go through cap-evolve's `benchmark-history` pipeline — see
+`ci/benchmarks/PUBLISHING.md` in cap-evolve — since `skillsbench` is already a first-class `bench`
+value there. This repo is for everything a metrics record can't hold: the narrative,
 the code that got evolved, the reasoning.
 
 ## Layout
@@ -46,24 +48,21 @@ the code that got evolved, the reasoning.
 - `ui/` — standalone browsable HTML artifacts (charts, heatmaps). Open directly in a
   browser from a checkout — no build step, no server.
 
-## Working on this branch
+## Working in this repo
 
-Always via a dedicated worktree, never `git switch skillsbench-history` in an existing
-checkout of `main` or another branch:
+Clone it like any repo — no worktree needed:
 
 ```bash
-git worktree add ../cap-evolve-worktrees/skillsbench-history skillsbench-history
+git clone git@github.com:skillberry-runs/skillsbench.git
 ```
 
-(Renamed twice on 2026-09-02: `skillbench_history` → `skillbench-history` → this, to match
-both `benchmark-history`'s hyphenation and the `skillsbench` spelling the rest of the repo
-uses. GitHub redirects both older names, but a checkout that predates a rename needs
-`git fetch --prune` and `git branch -m` to follow it.)
+(History note: before this migration the content lived on a cap-evolve branch that was
+renamed twice on 2026-09-02: `skillbench_history` → `skillbench-history` →
+`skillsbench-history`.)
 
 Note that `intake_skillbench_c*` worktree directories and `third_party/skillbench/` paths
-appearing throughout this branch are **not** typos to fix — they name real directories, and
-correcting the spelling would point them at paths that don't exist.
+appearing throughout this repo are **not** typos to fix — they name real directories in
+cap-evolve worktrees, and correcting the spelling would point them at paths that don't exist.
 
-Before every commit, run `git status` and review it — this branch has no `.gitignore`
-inherited from `main`, so double-check no `.env`, `.cache/`, or `__pycache__/` content
-is staged.
+Before every commit, run `git status` and review it — double-check no `.env`, `.cache/`,
+or `__pycache__/` content is staged (a `.gitignore` covers the common cases).
