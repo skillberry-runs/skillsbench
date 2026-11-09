@@ -1,0 +1,41 @@
+name: Notify cap-evolve Pages
+
+# This repo's content is rendered onto the cap-evolve site
+# (https://skillberry-ai.github.io/cap-evolve/skillsbench/) by cap-evolve's
+# pages.yml, which clones this repo at deploy time. This workflow asks cap-evolve
+# to redeploy whenever main changes, so the site stays current.
+#
+# Runs as skillberry-bot via CAP_EVOLVE_DISPATCH_TOKEN — a fine-grained token
+# owned by skillberry-bot, scoped to skillberry-ai/cap-evolve only, with
+# "Actions: read and write" (the minimum for workflow_dispatch).
+# (GITHUB_TOKEN can't do this: it's scoped to this repo.)
+#
+# Until that secret exists the job skips with a warning instead of failing, so
+# pushes stay green; redeploy cap-evolve by hand (Actions → Deploy GitHub Pages
+# → Run workflow) in the meantime.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: notify-cap-evolve-pages
+  cancel-in-progress: true
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch cap-evolve pages.yml on main
+        env:
+          GH_TOKEN: ${{ secrets.CAP_EVOLVE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::CAP_EVOLVE_DISPATCH_TOKEN not set — skipping cap-evolve Pages redeploy"
+            exit 0
+          fi
+          gh workflow run pages.yml --repo skillberry-ai/cap-evolve --ref main
+          echo "dispatched skillberry-ai/cap-evolve pages.yml for $GITHUB_SHA"
