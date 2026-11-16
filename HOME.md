@@ -72,7 +72,7 @@ setup. Cancelled at iteration 4 (optimizer hang); best accepted candidate is <co
 </div>
 <h2 id="more">More</h2>
 <div class="card-grid reveal">
-<a class="card" href="insights/skills_tasks_map.html">
+<a class="card" href="insights/SKILLS_TASKS_MAP.html">
 <div class="card-title">Skills ↔ tasks map</div>
 <p class="card-desc">All 87 tasks and their skills, numbered and cross-referenced, plus a per-category train/test split for skill optimization.</p>
 </a>
