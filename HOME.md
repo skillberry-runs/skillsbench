@@ -12,12 +12,10 @@ level 3 (a per-task report).
 <div class="callout-title">Level 3 is not fully on-site yet</div>
 <p>
 Per-task reports below are rendered from the
-<a class="ext-link" href="https://github.com/skillberry-runs/skillsbench" title="Private repo: only skillberry-runs org members can open this (others get a 404)">skillberry-runs/skillsbench (private)</a>
+<a class="ext-link" href="https://github.com/skillberry-runs/skillsbench">skillberry-runs/skillsbench</a>
 repo, but the skill packages they discuss (<code>seed/</code>, <code>best/</code>,
-<code>PROCESS.md</code> under <code>artifacts/</code> — about 27 MB) are not published on this site.
-That repo is <strong>private</strong>: the links to it on each report page, marked
-<a class="ext-link" href="#">GitHub (private)</a>, open only for members of the
-<code>skillberry-runs</code> GitHub org. Anyone else gets a 404, which means no access, not a broken link.
+<code>PROCESS.md</code> under <code>artifacts/</code> — about 27 MB) are not rendered on this site.
+Each report page links to them in that repo on GitHub, marked <a class="ext-link" href="#">GitHub</a>.
 </p>
 </div>
 <h2 id="task-by-task">task-by-task — one skill per task (87 tasks)</h2>
