@@ -25,11 +25,11 @@ the same 43 tasks (+3.1 pp), task-native seed delivers ~12× the aggregate lift.
 
 | Folder | What it is | Best result |
 |---|---|---|
-| [`baseline-10task/`](baseline-10task/) | First working run — 10-task shared-office subset, Sonnet-4.6. Small sample, used to validate CCC plumbing. | val = 14.29% (1/7 tasks pass) |
-| [`all87-broken-wiring/`](all87-broken-wiring/) | 87-task attempt after adapter was expanded. Killed once we spotted new infra-error classes (`network_mode` conflict on 14 tasks, `python:3.12-slim` base failures on 26 tasks). Used to derive the 43-task RUNNABLE subset. | *baseline never completed* |
-| [`runnable-43task-opt/`](runnable-43task-opt/) | 43-task RUNNABLE subset, Sonnet-5 agent + Opus-4.8 optimizer, office quartet as seed. Baseline 13.95% → best cand_0002 17.05% (+3.11 pp, gate-accepted); cand_0004 optimizer hung 2h → job killed. | val = 17.05% (+3.11 pp) |
-| [`task-by-task-43/`](task-by-task-43/) | **NEW main event.** ALL 43 runnable tasks, one cap-evolve process per task with task's OWN shipped skills as seed, 10 trials × up to 4 iterations, dedicated LSF host per task. Three submission batches. See `summary.md`, `heatmap.html`, and `per-task-logs/` (43 files). | **avg val = 87.1% (+36.3 pp)** |
-| [`analysis/`](analysis/) | Cross-phase flat CSV (`per_task_scores.csv`) — one row per (task × phase × candidate) with mean_reward, trial_rewards, notes. 400 rows. Plus `optimization_analysis.html`. | — |
+| [`baseline-10task/`](../results/baseline-10task/) | First working run — 10-task shared-office subset, Sonnet-4.6. Small sample, used to validate CCC plumbing. | val = 14.29% (1/7 tasks pass) |
+| [`all87-broken-wiring/`](../results/all87-broken-wiring/) | 87-task attempt after adapter was expanded. Killed once we spotted new infra-error classes (`network_mode` conflict on 14 tasks, `python:3.12-slim` base failures on 26 tasks). Used to derive the 43-task RUNNABLE subset. | *baseline never completed* |
+| [`runnable-43task-opt/`](../results/runnable-43task-opt/) | 43-task RUNNABLE subset, Sonnet-5 agent + Opus-4.8 optimizer, office quartet as seed. Baseline 13.95% → best cand_0002 17.05% (+3.11 pp, gate-accepted); cand_0004 optimizer hung 2h → job killed. | val = 17.05% (+3.11 pp) |
+| [`task-by-task-43/`](../results/task-by-task-43/) | **NEW main event.** ALL 43 runnable tasks, one cap-evolve process per task with task's OWN shipped skills as seed, 10 trials × up to 4 iterations, dedicated LSF host per task. Three submission batches. See `summary.md`, `heatmap.html`, and `per-task-logs/` (43 files). | **avg val = 87.1% (+36.3 pp)** |
+| [`analysis/`](../results/analysis/) | Cross-phase flat CSV (`per_task_scores.csv`) — one row per (task × phase × candidate) with mean_reward, trial_rewards, notes. 400 rows. Plus `optimization_analysis.html`. | — |
 | [`INVESTIGATION.md`](INVESTIGATION.md) | Insights + open investigations: v7 podman fix, Track A, optimizer-hurts-baseline pattern, next-steps for cap-evolve improvements. | — |
 
 Each phase folder contains:
@@ -58,7 +58,7 @@ Each phase folder contains:
 - **14 partial lifts** in the 0.05–0.99 range (mostly 0.4-0.9).
 - **2 stuck at 0.000**: `python-scala-translation` (Scala/GraalVM runtime crash — different infra failure not covered by v7 fix), `spring-boot-jakarta-migration` (JVM tooling infra).
 
-See [`task-by-task-43/heatmap.html`](task-by-task-43/heatmap.html) for the interactive per-task × per-candidate heatmap. Full breakdown in [`task-by-task-43/summary.md`](task-by-task-43/summary.md).
+See [`task-by-task-43/heatmap.html`](../results/task-by-task-43/heatmap.html) for the interactive per-task × per-candidate heatmap. Full breakdown in [`task-by-task-43/summary.md`](../results/task-by-task-43/summary.md).
 
 ### runnable-43task-opt (prior main event)
 
@@ -86,18 +86,18 @@ Cap-evolve run directories (kept preserved, do not delete):
 
 Config + adapters used across phases:
 
-- [`.capevolve/project/capevolve.yaml`](../.capevolve/project/capevolve.yaml) — 10-task shared-office spec
-- [`.capevolve/project/capevolve.runnable.yaml`](../.capevolve/project/capevolve.runnable.yaml) — 43-task RUNNABLE subset spec (main event)
-- [`.capevolve/project/capevolve.all87.yaml`](../.capevolve/project/capevolve.all87.yaml) — full 87-task spec (blocked)
-- [`.capevolve/project/split_ids.runnable.json`](../.capevolve/project/split_ids.runnable.json) — the 43-task subset list
-- [`.capevolve/project/adapters/adapter.py`](../.capevolve/project/adapters/adapter.py) — env-driven MODEL/AGENT
-- [`.env`](../.env) — ETE creds + `SKILLSBENCH_MODEL=claude-sonnet-5` + `SKILLSBENCH_SANDBOX_USER=` (root)
+- `.capevolve/project/capevolve.yaml` (not in this repo) — 10-task shared-office spec
+- [`.capevolve/project/capevolve.runnable.yaml`](../recipes/all/capevolve.runnable.yaml) — 43-task RUNNABLE subset spec (main event)
+- [`.capevolve/project/capevolve.all87.yaml`](../recipes/all/capevolve.all87.yaml) — full 87-task spec (blocked)
+- [`.capevolve/project/split_ids.runnable.json`](../recipes/all/split_ids.runnable.json) — the 43-task subset list
+- `.capevolve/project/adapters/adapter.py` (in the cap-evolve worktree the run used; not in this repo) — env-driven MODEL/AGENT
+- `.env` (credentials; never committed) — ETE creds + `SKILLSBENCH_MODEL=claude-sonnet-5` + `SKILLSBENCH_SANDBOX_USER=` (root)
 
 Documentation for re-picking-up context:
 
-- [`HANDOFF_CCC.md`](../HANDOFF_CCC.md) — long-form; every workaround and its why.
-- [`CCC_PODMAN_SETUP.md`](../CCC_PODMAN_SETUP.md) — colleague-facing recipe for rootless podman on CCC.
-- [`SKILLSBENCH_INVENTORY.md`](../SKILLSBENCH_INVENTORY.md) — 87-task landscape by category, difficulty, task-type, shipped skills.
+- `HANDOFF_CCC.md` (not in this repo) — long-form; every workaround and its why.
+- [`CCC_PODMAN_SETUP.md`](https://github.com/skillberry-ai/cap-evolve/blob/main/docs/how-to/ccc/CCC_PODMAN_SETUP.md) — colleague-facing recipe for rootless podman on CCC.
+- [`SKILLSBENCH_INVENTORY.md`](SKILLSBENCH_INVENTORY.md) — 87-task landscape by category, difficulty, task-type, shipped skills.
 
 ---
 
@@ -124,7 +124,7 @@ bsub -q normal -M 100G -n 1 -W 30:00 \
 ## Where we are now (2026-08-21)
 
 The task-by-task strategy hypothesized in the previous README revision has been
-**run and validated** on 20 tasks — see [`task-by-task-20/`](task-by-task-20/).
+**run and validated** on 20 tasks — see `task-by-task-20/` (not in this repo).
 
 Key findings:
 
@@ -162,8 +162,8 @@ Open questions:
 
 The three files to open in order:
 
-1. **[HANDOFF_CCC.md](../HANDOFF_CCC.md)** — long-form; every workaround and its why.
+1. **HANDOFF_CCC.md (not in this repo)** — long-form; every workaround and its why.
 2. **This file** — quick pointers + phase-folder index.
-3. **[SKILLSBENCH_INVENTORY.md](../SKILLSBENCH_INVENTORY.md)** — for the task-by-task discussion.
+3. **[SKILLSBENCH_INVENTORY.md](SKILLSBENCH_INVENTORY.md)** — for the task-by-task discussion.
 
 If your fresh Claude session is picking up cold, tell it to read HANDOFF_CCC.md first.

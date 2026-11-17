@@ -11,8 +11,8 @@ doc was written by a prior Claude session working from the same repo; it isn't g
 
 ## Mission
 
-Full design: [`../docs/train_test_split_proposal.md`](../docs/train_test_split_proposal.md).
-Already-scoped pilot list: [`../docs/transfer_eval_runs.md`](../docs/transfer_eval_runs.md).
+Full design: [`../docs/train_test_split_proposal.md`](../proposals/train_test_split_proposal.md).
+Already-scoped pilot list: [`../docs/transfer_eval_runs.md`](../proposals/transfer_eval_runs.md).
 Read both before starting — this handoff summarizes them but they're the source of truth.
 
 The question: do skills cap-evolve evolves on one task **transfer** to a different task

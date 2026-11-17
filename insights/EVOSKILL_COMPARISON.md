@@ -118,7 +118,7 @@ mapping is clean.
 | mathematics-or-formal-reasoning | 8 | 1 | 7 | 100.0% | 12.5% | 1.000 | (no direct match) | — |
 | **OVERALL** | **87** | **43** | **44** | **65.1%** | **32.2%** | **0.879** | — | **71.1%** |
 
-Bar chart visualization: [`evoskill_comparison_chart.html`](evoskill_comparison_chart.html).
+Bar chart visualization: `evoskill_comparison_chart.html` (the 43-task chart, removed on 2026-09-01; the 87-task one is [`ui/evoskill_comparison_chart_87.html`](../ui/evoskill_comparison_chart_87.html)).
 
 ---
 
@@ -228,7 +228,7 @@ push Paths B+C in parallel over 2-4 weeks and publish the full-benchmark result.
 ## Related docs
 
 - [`INVESTIGATION.md`](INVESTIGATION.md) — 4-layer infra bug chain + optimizer-hurts-baseline root cause
-- [`task-by-task-43/summary.md`](task-by-task-43/summary.md) — per-task breakdown of our 43-task run
-- [`task-by-task-43/heatmap.html`](task-by-task-43/heatmap.html) — interactive heatmap
-- [`README.md`](README.md) — landing page for all skillsbench-results
+- [`task-by-task-43/summary.md`](../results/task-by-task-43/summary.md) — per-task breakdown of our 43-task run
+- [`task-by-task-43/heatmap.html`](../results/task-by-task-43/heatmap.html) — interactive heatmap
+- [`README.md`](skillsbench-results-README.md) — landing page for all skillsbench-results
 - Paper: `arXiv:2604.01687v1` (Zhang et al., 2 Apr 2026)

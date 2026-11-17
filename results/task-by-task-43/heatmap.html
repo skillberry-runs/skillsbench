@@ -65,7 +65,7 @@
     <strong>Cells:</strong> mean reward across 10 trials. Grey/"—" = candidate not run.<br>
     <strong>Best (amber):</strong> best mean across all evaluated candidates; the best cell has a purple ring.<br>
     <strong>Amber-bordered baseline:</strong> saturated at seed (val=1.0); optimizer skipped.<br>
-    <strong>v5 badge:</strong> data from 2026-08-24 rerun after clearing 4 layers of infra caching (patched-ubuntu v7 image, stale flock, 90 seed-dir cache subdirs, new ANTHROPIC creds). See <a href="../INVESTIGATION.md">INVESTIGATION.md</a>.
+    <strong>v5 badge:</strong> data from 2026-08-24 rerun after clearing 4 layers of infra caching (patched-ubuntu v7 image, stale flock, 90 seed-dir cache subdirs, new ANTHROPIC creds). See <a href="../../insights/INVESTIGATION.md">INVESTIGATION.md</a>.
   </p>
 </div>
 
@@ -932,7 +932,7 @@ function render() {
       </tbody>
     </table>
     <strong>Task outcomes:</strong> ${nAt1}/43 (${(nAt1/DATA.length*100).toFixed(0)}%) reach val=1.0.<br>
-    <strong>Optimizer-hurts-baseline pattern (v5 confirmed real):</strong> drone-planning-control (seed 0.72 → all cands ≤ 0.3), jax-computing-basics (0.90 → ≤ 0.4), paper-anonymizer (0.60 → ≤ 0.2). On these, the optimizer's edits produce numerical drift or fragment cohesive skills → strict verifiers reject. See <a href="../INVESTIGATION.md">INVESTIGATION.md</a> for the 4-layer bug chain that hid this signal + 4 optimizer improvements to test + 3 task-level fixes.
+    <strong>Optimizer-hurts-baseline pattern (v5 confirmed real):</strong> drone-planning-control (seed 0.72 → all cands ≤ 0.3), jax-computing-basics (0.90 → ≤ 0.4), paper-anonymizer (0.60 → ≤ 0.2). On these, the optimizer's edits produce numerical drift or fragment cohesive skills → strict verifiers reject. See <a href="../../insights/INVESTIGATION.md">INVESTIGATION.md</a> for the 4-layer bug chain that hid this signal + 4 optimizer improvements to test + 3 task-level fixes.
   `;
 }
 document.querySelectorAll('input[name=sort]').forEach(el => el.addEventListener('change', render));
