@@ -7,9 +7,9 @@ This repo was migrated on 2026-11-09 from the `skillsbench-history` orphan branc
 `skillberry-ai/cap-evolve`, with full commit history preserved. It is one of the
 per-benchmark result repos in the [skillberry-runs](https://github.com/skillberry-runs) org.
 
-Published (rendered) at <https://skillberry-ai.github.io/cap-evolve/skillsbench/> by
-cap-evolve's `pages.yml`; `.github/workflows/notify-cap-evolve-pages.yml` triggers a
-redeploy on every push to `main`.
+Published (rendered) at <https://skillberry-runs.github.io/dashboard/skillsbench/> by the
+[dashboard](https://github.com/skillberry-runs/dashboard)'s deploy (cap-evolve's old addresses
+redirect there). After pushing here, run the dashboard's *Deploy dashboard* workflow.
 
 ## Why this repo exists
 
