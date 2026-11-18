@@ -16,7 +16,7 @@ Last updated: 2026-08-23.
 27 of 43 tasks reach val=1.0 (63%). Compared to whole-suite optimization on
 the same 43 tasks (+3.1 pp), task-native seed delivers ~12× the aggregate lift.**
 
-- Prior main event (whole-suite runnable-43): PR #270 merged 2026-07-31 — [`local-20260730-skillsbench-runnable-sonnet5-optimize.md`](https://github.com/skillberry-ai/cap-evolve/blob/benchmark-history/docs/runs/local-20260730-skillsbench-runnable-sonnet5-optimize.md)
+- Prior main event (whole-suite runnable-43): PR #270 merged 2026-07-31 — [`local-20260730-skillsbench-runnable-sonnet5-optimize.md`](https://skillberry-runs.github.io/dashboard/notes/runs/local-20260730-skillsbench-runnable-sonnet5-optimize.html)
 - New main event (task-by-task-43): c2 worktree, 43 tasks × 10 trials × up to 4 iters, ~$3,000 spent across 2026-08-19 → 2026-08-23.
 
 ---

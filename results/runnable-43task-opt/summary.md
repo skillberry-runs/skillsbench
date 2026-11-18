@@ -7,7 +7,7 @@
 **Split discipline:** fit-metric (train == val == 43 tasks; test = 3 dummy tasks overlapping val)
 **Cap-evolve spec:** `.capevolve/project/capevolve.runnable.yaml`
 **Run dir:** `.capevolve/run_runnable_iter7_v1_KILLED_iter4_optimizer_hung_2h/`
-**Merged doc on `benchmark-history`:** [local-20260730-skillsbench-runnable-sonnet5-optimize.md](https://github.com/skillberry-ai/cap-evolve/blob/benchmark-history/docs/runs/local-20260730-skillsbench-runnable-sonnet5-optimize.md)
+**Merged doc on `benchmark-history`:** [local-20260730-skillsbench-runnable-sonnet5-optimize.md](https://skillberry-runs.github.io/dashboard/notes/runs/local-20260730-skillsbench-runnable-sonnet5-optimize.html)
 
 ## Aggregate
 
